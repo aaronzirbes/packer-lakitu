@@ -1,0 +1,5 @@
+api.keys.ALL=disabled
+api.keys.AN_API_KEY: key description
+aws.region: us-east-1
+aws.sqs.pushQueue: your-commands
+aws.sqs.pullQueue: your-state

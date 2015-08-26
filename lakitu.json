@@ -1,0 +1,38 @@
+{
+  "variables": {
+    "instance_type": "t2.micro",
+    "source_ami": "ami-d05e75b8",
+    "ssh_username": "ubuntu",
+    "version": "latest"
+  },
+  "builders": [
+    {
+      "ami_name": "lakitu-{{user `version`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "region": "us-east-1",
+      "source_ami": "{{user `source_ami`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "tags": {
+        "Date_Created": "{{isotime \"2006-01-02_15-04-05\"}}",
+        "SourceAMI": "{{user `source_ami`}}"
+      },
+      "type": "amazon-ebs"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [ "sudo apt-get install -y ansible" ]
+    },
+    {
+      "type": "file",
+      "source": "application.properties",
+      "destination": "/tmp/lakitu.application.properties"
+    },
+    {
+      "extra_arguments": [ "-e", "'version={{user `version`}}'" ],
+      "playbook_file": "lakitu.yml",
+      "type": "ansible-local"
+    }
+  ]
+}

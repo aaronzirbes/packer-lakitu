@@ -1,0 +1,24 @@
+---
+- hosts: all
+  sudo: yes
+  gather_facts: yes
+  tasks:
+
+  - name: Create directory
+    file: path=/etc/lakitu state=directory
+
+  - name: Copy config file
+    copy: src=/tmp/lakitu.application.properties dest=/etc/lakitu/application.properties
+
+  - name: Create directory
+    file: path=/etc/lakitu state=directory
+
+  - name: Install Docker
+    apt: pkg=docker.io update-cache=true state=present
+
+  - name: Pull docker container
+    command: docker pull aaronzirbes/lakitu:{{version}}
+
+  - name: Start docker container with restart=true
+    command: "docker --restart=true run -p 8080:8080 -p 8181:8181 -v /etc/lakitu:/usr/local/lakitu/config --name lakitu -d aaronzirbes/lakitu:{{version}}"
+      
