@@ -3,7 +3,7 @@
     "instance_type": "t2.micro",
     "source_ami": "ami-d05e75b8",
     "ssh_username": "ubuntu",
-    "version": "latest"
+    "version": "0.8.0"
   },
   "builders": [
     {
