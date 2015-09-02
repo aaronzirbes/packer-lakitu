@@ -55,6 +55,7 @@ resource "aws_instance" "lakitu" {
     ami = "${var.lakitu_ami}"
     instance_type = "t2.micro"
     key_name = "lakitu-ssh"
+    iam_instance_profile = "lakitu"
     security_groups = [ "${aws_security_group.http_8080_only.name}" ]
     associate_public_ip_address = true
     tags {
