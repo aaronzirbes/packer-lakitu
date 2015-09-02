@@ -5,8 +5,13 @@ aws_secret_access_key = "your amazon secret key"
 */
 
 variable "lakitu_ami" {
-    default = "ami-c175f3aa"
+    default = "ami-bb1593d0"
     description = "AWS Access Key"
+}
+
+variable "aws_region" {
+    default = "us-east-1"
+    description = "AWS Region"
 }
 
 variable "aws_access_key_id" {
@@ -21,7 +26,7 @@ variable "aws_secret_access_key" {
 provider "aws" {
     access_key = "${var.aws_access_key_id}"
     secret_key = "${var.aws_secret_access_key}"
-    region = "us-east-1"
+    region = "${var.aws_region}"
 }
 
 /* Security Groups and stuff */
