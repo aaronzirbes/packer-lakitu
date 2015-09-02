@@ -21,4 +21,3 @@
 
   - name: Start docker container with restart=true
     command: "docker --restart=true run -p 8080:8080 -p 8181:8181 -v /etc/lakitu:/usr/local/lakitu/config --name lakitu -d aaronzirbes/lakitu:{{version}}"
-      

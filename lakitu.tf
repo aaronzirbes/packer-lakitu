@@ -5,7 +5,7 @@ aws_secret_access_key = "your amazon secret key"
 */
 
 variable "lakitu_ami" {
-    default = "ami-9f5fd9f4"
+    default = "ami-c175f3aa"
     description = "AWS Access Key"
 }
 

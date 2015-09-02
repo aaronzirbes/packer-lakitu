@@ -8,5 +8,5 @@ Copy the `application.properties.sample` to `application.properties` and create 
 
 This builds an AMI using packer an ansible
 
-    packer build -var "version=0.8.0" lakitu.json
+    packer build lakitu.json
 
