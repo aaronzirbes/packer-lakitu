@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 URL=https://bintray.com/mnclimbingcoop/maven/lakitu/_latestVersion
-
 LATEST_VERSION=`curl -is $URL |grep Location: |sed -e 's#.*https://bintray.com/##' |cut -d \/ -f 4`
 
 echo "Building AMI for Lakitu version '${LATEST_VERSION}'"

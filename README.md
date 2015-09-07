@@ -13,11 +13,11 @@ This builds an AMI using packer an ansible
 
 To build a specific version
 
-    packer build -var 'version=0.8.8' lakitu.json
+    packer build -var 'version=0.1.2' lakitu.json
 
 To build a specific version with machine readable output written to a file
 
-    packer -machine-readable build -var 'version=0.8.8' lakitu.json |tee build-0.8.8.packer
+    packer -machine-readable build -var 'version=0.1.2' lakitu.json |tee build-0.1.2.packer
 
 ## Launching to AWS
 
@@ -31,7 +31,7 @@ to deploy a specific AMI
 
 to get the AMI out of the machine readable output
 
-    export AMI_INFO=`grep amazon-ebs,artifact,0,id, build-0.8.8.packer |cut -d , -f 6`
+    export AMI_INFO=`grep amazon-ebs,artifact,0,id, build-0.1.2.packer |cut -d , -f 6`
     export AWS_REGION=`echo "${AMI_INFO}" |cut -d : -f 1`
     export AWS_IMAGE_ID=`echo "${AMI_INFO}" |cut -d : -f 2`
     terraform apply -var "aws_region=${AWS_REGION}" -var "lakitu_ami=${AWS_IMAGE_ID}"
